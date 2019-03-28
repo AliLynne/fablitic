@@ -1,0 +1,13 @@
+{
+  "name": "fablitic",
+  "version": "0.0.1",
+  "description": "Use Daily Record of Severity of Problems to track PMS/PMDD symptoms",
+  "main": "day.js",
+  "author": "AliLynne",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.19.0",
+    "inquirer": "^6.2.2",
+    "mongoose": "^5.4.20"
+  }
+}
