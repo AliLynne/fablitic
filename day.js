@@ -6,7 +6,16 @@ const questions = [
   {
     type: 'input',
     name: 'date',
-    message: 'Enter the date for questions in MM/DD/YYYY format'
+    message: 'Enter the date for questions in MM/DD/YYYY format',
+    validate: function(val) {
+      let pass = val.match(
+        /^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$/i
+      )
+      if (pass) {
+        return true
+      }
+      return 'Please enter a valid date'
+    }
   },
   {
     type: 'confirm',
