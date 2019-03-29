@@ -1,12 +1,14 @@
+#!/usr/bin/env node
+
 const program = require('commander')
 const { prompt } = require('inquirer')
-const { addDay } = require('./logic')
+const { addDay, getDays, getLastWeek } = require('./logic')
 
 const questions = [
   {
     type: 'input',
     name: 'date',
-    message: 'Enter the date for questions in MM/DD/YYYY format',
+    message: 'Enter the date for questions in MM/DD/YYYY format.',
     validate: function(val) {
       let pass = val.match(
         /^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$/i
@@ -20,7 +22,8 @@ const questions = [
   {
     type: 'confirm',
     name: 'periodStart',
-    message: 'Did your period start today?'
+    message: 'Did your period start today? Leave blank for No.',
+    default: false
   },
   {
     type: 'confirm',
@@ -88,6 +91,14 @@ const questions = [
     message: 'Did you have cravings for any specific foods?'
   },
   {
+    type: 'input',
+    name: 'craving',
+    message: 'Which foods did you crave?',
+    when: function(answers) {
+      return answers.q13 === true
+    }
+  },
+  {
     type: 'confirm',
     name: 'q14',
     message: 'Did you sleep more, take naps, or have difficulty getting up when intended today?'
@@ -152,7 +163,10 @@ const questions = [
       'Light',
       'Spotting',
       'None'
-    ]
+    ],
+    filter: function(val) {
+      return val.toLowerCase()
+    }
   }
 ]
 
@@ -167,5 +181,17 @@ program
   .action(() => {
     prompt(questions).then(answers => addDay(answers))
   })
+
+program
+  .command('getDays')
+  .alias('g')
+  .description('Get a list of all days')
+  .action(days => getDays(days))
+
+program
+  .command('getLastWeek')
+  .alias('w')
+  .description('Get a list of the last 7 days of data')
+  .action(days => getLastWeek(days))
 
   program.parse(process.argv)
