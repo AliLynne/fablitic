@@ -28,7 +28,10 @@ const questions = [
   {
     type: 'confirm',
     name: 'q1',
-    message: 'Did you feel depressed, sad, down, or blue at any time today?'
+    message: 'Did you feel depressed, sad, down, or blue at any time today?',
+    validate: function validateConfirm(res) {
+      return res !== ''
+    }
   },
   {
     type: 'confirm',

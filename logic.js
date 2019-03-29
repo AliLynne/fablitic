@@ -1,12 +1,8 @@
 const mongoose = require('mongoose')
 const assert = require('assert')
 const moment = require('moment')
-mongoose.Promise = global.Promise
 
-/**
- * @todo Have run on CircleCI for every PR and Commit to Master
- * @todo In CircleCI call the version command- if there's an error it will fail.
- */
+mongoose.Promise = global.Promise
 
 mongoose.connect('mongodb://localhost:27017/fabilitic', { useNewUrlParser: true })
 const db = mongoose.connection;

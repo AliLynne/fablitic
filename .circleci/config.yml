@@ -28,11 +28,11 @@ jobs:
 
       - run: yarn install
 
+      # run tests!
+      - run: 
+          command: node day.js -v
+
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
-      # run tests!
-      - run: 
-          command: node day.js -v
