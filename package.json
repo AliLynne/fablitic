@@ -10,5 +10,8 @@
     "inquirer": "^6.2.2",
     "moment": "^2.24.0",
     "mongoose": "^5.4.20"
+  },
+  "scripts": {
+    "test": "node day.js -v"
   }
 }
