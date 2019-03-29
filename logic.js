@@ -1,21 +1,28 @@
 const mongoose = require('mongoose')
 const assert = require('assert')
-mongoose.Promise = global.Promise
 const moment = require('moment')
+mongoose.Promise = global.Promise
+
+/**
+ * @todo Have run on CircleCI for every PR and Commit to Master
+ * @todo In CircleCI call the version command- if there's an error it will fail.
+ */
 
 mongoose.connect('mongodb://localhost:27017/fabilitic', { useNewUrlParser: true })
 const db = mongoose.connection;
 
-const cycleSchema = mongoose.Schema({
+const daySchema = mongoose.Schema({
   date: { type: Date, default: new Date() },
   periodStart: { type: Boolean },
-  q1: { type: Boolean }
+  q1: { type: Boolean },
+  q2: { type: Boolean },
+  q3: { type: Boolean }
 })
 
-const Cycle = mongoose.model('Cycle', cycleSchema)
+const Day = mongoose.model('Day', daySchema)
 
 const addDay = day => {
-  Cycle.create(day, (err) => {
+  Day.create(day, (err) => {
     assert.equal(null, err)
     console.info(day)
     db.close()
@@ -23,7 +30,7 @@ const addDay = day => {
 }
 
 const getDays = () => {
-  Cycle.find()
+  Day.find()
   .exec((err, list) => {
     assert.equal(null, err)
     console.info(list)
@@ -32,7 +39,7 @@ const getDays = () => {
 }
 
 const getLastWeek = () => {
-  Cycle.find({
+  Day.find({
     date: {
       $gte: moment().subtract(7, 'days').calendar()
     }
