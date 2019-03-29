@@ -16,7 +16,26 @@ const daySchema = mongoose.Schema({
   periodStart: { type: Boolean },
   q1: { type: Boolean },
   q2: { type: Boolean },
-  q3: { type: Boolean }
+  q3: { type: Boolean },
+  q4: { type: Boolean },
+  q5: { type: Boolean },
+  q6: { type: Boolean },
+  q7: { type: Boolean },
+  q8: { type: Boolean },
+  q9: { type: Boolean },
+  q10: { type: Boolean },
+  q11: { type: Boolean },
+  q12: { type: Boolean },
+  q13: { type: Boolean },
+  craving: { type: String },
+  q14: { type: Boolean },
+  q15: { type: Boolean },
+  q20: { type: Boolean },
+  q21: { type: Boolean },
+  q22: { type: Boolean },
+  q23: { type: Boolean },
+  q24: { type: Boolean },
+  menstrualFlow: { type: String }
 })
 
 const Day = mongoose.model('Day', daySchema)
