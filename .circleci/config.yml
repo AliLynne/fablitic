@@ -35,4 +35,4 @@ jobs:
 
       # run tests!
       - run: 
-        command: node day.js -v
+          command: node day.js -v
