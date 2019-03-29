@@ -171,7 +171,6 @@ const questions = [
 ]
 
 program
-  .version('0.0.1', '-v, --version')
   .description('PMS/PMDD Symptom Tracker')
 
 program
