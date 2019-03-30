@@ -12,6 +12,9 @@
     "mongoose": "^5.4.20"
   },
   "scripts": {
-    "test": "node day.js -v"
+    "test": "./node_modules/mocha/bin/mocha"
+  },
+  "devDependencies": {
+    "mocha": "^6.0.2"
   }
 }
