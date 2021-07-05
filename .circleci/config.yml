@@ -31,6 +31,9 @@ jobs:
       # run tests!
       - run: 
           command: node day.js -v
+      
+      - run:
+          command: npm run test
 
       - save_cache:
           paths:
